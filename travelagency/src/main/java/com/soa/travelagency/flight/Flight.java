@@ -2,7 +2,8 @@ package com.soa.travelagency.flight;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 @Entity
 @Table
 public class Flight {
@@ -20,41 +21,53 @@ private long id;
  private String origin;
  private  String destination;
 
- private Date travelDate;
+ private LocalDate travelDate;
 
- private Date returnDate;
-
- private int number_of_adults;
- private int number_of_children;
- private int number_of_infants;
+ private LocalDate returnDate;
 
  private String cabinClass;
 
  private String currency;
 
- public Flight(long id, String origin, String destination, Date travelDate, Date returnDate, int number_of_adults, int number_of_children, int number_of_infants, String cabinClass, String currency) {
+ private int number_of_seats_avail;
+ private int number_of_seats;
+
+ private String serviceProvider;
+
+
+ private  double price;
+
+
+
+ public Flight(long id, String origin, String destination, LocalDate travelDate, LocalDate returnDate, String cabinClass,
+               String currency, int number_of_seats_avail, int number_of_seats,
+               String serviceProvider,double price) {
   this.id = id;
   this.origin = origin;
   this.destination = destination;
   this.travelDate = travelDate;
   this.returnDate = returnDate;
-  this.number_of_adults = number_of_adults;
-  this.number_of_children = number_of_children;
-  this.number_of_infants = number_of_infants;
   this.cabinClass = cabinClass;
   this.currency = currency;
+  this.number_of_seats_avail = number_of_seats_avail;
+  this.number_of_seats = number_of_seats;
+  this.serviceProvider=serviceProvider;
+  this.price=price;
  }
 
- public Flight(String origin, String destination, Date travelDate, Date returnDate, int number_of_adults, int number_of_children, int number_of_infants, String cabinClass, String currency) {
+ public Flight(String origin, String destination, LocalDate travelDate,
+               LocalDate returnDate, String cabinClass, String currency,
+               int number_of_seats_avail, int number_of_seats, String serviceProvider,double price) {
   this.origin = origin;
   this.destination = destination;
   this.travelDate = travelDate;
   this.returnDate = returnDate;
-  this.number_of_adults = number_of_adults;
-  this.number_of_children = number_of_children;
-  this.number_of_infants = number_of_infants;
   this.cabinClass = cabinClass;
   this.currency = currency;
+  this.number_of_seats_avail = number_of_seats_avail;
+  this.number_of_seats = number_of_seats;
+  this.serviceProvider=serviceProvider;
+  this.price=price;
  }
 
  public Flight() {
@@ -84,45 +97,22 @@ private long id;
   this.destination = destination;
  }
 
- public Date getTravelDate() {
+ public LocalDate getTravelDate() {
   return travelDate;
  }
 
- public void setTravelDate(Date travelDate) {
+ public void setTravelDate(LocalDate travelDate) {
   this.travelDate = travelDate;
  }
 
- public Date getReturnDate() {
+ public LocalDate getReturnDate() {
   return returnDate;
  }
 
- public void setReturnDate(Date returnDate) {
+ public void setReturnDate(LocalDate returnDate) {
   this.returnDate = returnDate;
  }
 
- public int getNumber_of_adults() {
-  return number_of_adults;
- }
-
- public void setNumber_of_adults(int number_of_adults) {
-  this.number_of_adults = number_of_adults;
- }
-
- public int getNumber_of_children() {
-  return number_of_children;
- }
-
- public void setNumber_of_children(int number_of_children) {
-  this.number_of_children = number_of_children;
- }
-
- public int getNumber_of_infants() {
-  return number_of_infants;
- }
-
- public void setNumber_of_infants(int number_of_infants) {
-  this.number_of_infants = number_of_infants;
- }
 
  public String getCabinClass() {
   return cabinClass;
@@ -139,20 +129,38 @@ private long id;
  public void setCurrency(String currency) {
   this.currency = currency;
  }
-
- @Override
- public String toString() {
-  return "Flight{" +
-          "id=" + id +
-          ", origin='" + origin + '\'' +
-          ", destination='" + destination + '\'' +
-          ", travelDate=" + travelDate +
-          ", returnDate=" + returnDate +
-          ", number_of_adults=" + number_of_adults +
-          ", number_of_children=" + number_of_children +
-          ", number_of_infants=" + number_of_infants +
-          ", cabinClass='" + cabinClass + '\'' +
-          ", currency='" + currency + '\'' +
-          '}';
+ public int getNumber_of_seats_avail() {
+  return number_of_seats_avail;
  }
+
+ public void setNumber_of_seats_avail(int number_of_seats_avail) {
+  this.number_of_seats_avail = number_of_seats_avail;
+ }
+
+ public int getNumber_of_seats() {
+  return number_of_seats;
+ }
+
+ public void setNumber_of_seats(int number_of_seats) {
+  this.number_of_seats = number_of_seats;
+ }
+
+ public String getServiceProvider() {
+  return serviceProvider;
+ }
+
+ public void setServiceProvider(String serviceProvider) {
+  this.serviceProvider = serviceProvider;
+ }
+
+ public double getPrice() {
+  return price;
+ }
+
+ public void setPrice(double price) {
+  this.price = price;
+ }
+
+
+
 }

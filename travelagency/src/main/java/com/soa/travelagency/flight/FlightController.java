@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping(path="api/v1/flight")
+@RequestMapping(path="api/v1/flights")
 public class FlightController {
 
     private final FlightService flightServiceService;
