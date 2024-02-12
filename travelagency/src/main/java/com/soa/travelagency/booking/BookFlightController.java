@@ -8,26 +8,30 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping(path = "api/v2/book-flight")
+@RequestMapping(path = "api/v1/bookings")
 public class BookFlightController {
     private final BookFlightService bookFlightService;
     @Autowired
     public BookFlightController(BookFlightService bookFlightService){
+
         this.bookFlightService=bookFlightService;
     }
-    @GetMapping(path = "api/v2/book-flight")
+    @GetMapping
     public List<BookFlight> getBookedFlights(){
-       return bookFlightService.getBookedFlights();
+
+        return bookFlightService.getBookedFlights();
     }
 
     @PostMapping
-    public void createBookedFlight(@RequestBody BookFlight bookFlight){
+    public String createBookedFlight(@RequestBody BookFlight bookFlight){
         bookFlightService.createBookedFlight(bookFlight);
+        return "Flight has been book successfully";
     }
 
     @DeleteMapping("{bookFlightId}")
-    public void deleteBookedFlight(@PathVariable("bookFlightId") long bookFlightId ){
-    bookFlightService.deleteBookedFlight(bookFlightId);
+    public String deleteBookedFlight(@PathVariable("bookFlightId") long bookFlightId ){
+        bookFlightService.deleteBookedFlight(bookFlightId);
+        return "Booking with id "+bookFlightId+" has been deleted";
     }
 
     @PutMapping("{bookFlightId}")

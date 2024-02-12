@@ -20,12 +20,18 @@ public class BookFlightService {
         return bookFlightRepository.findAll();
     }
 
-    public void createBookedFlight(BookFlight bookFlight){
+    public String createBookedFlight(BookFlight bookFlight){
+
         bookFlightRepository.save(bookFlight);
+
+        return "Flight has been book successfully";
+
     }
 
-    public void deleteBookedFlight( Long bookFlightId){
+    public String deleteBookedFlight( Long bookFlightId){
+
         bookFlightRepository.deleteById(bookFlightId);
+        return "Booking with id "+bookFlightId+" has been deleted";
     }
    @Transactional
     public void updateBookedFlight(long bookFlightId, String origin, String destination, LocalDate travelDate,
