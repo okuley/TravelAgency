@@ -14,7 +14,7 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
 
     @Query(
             value = "SELECT * FROM flight u WHERE u.origin =:origin and u.destination=:destination " +
-                    "and travelDate=:travelDate and returnDate=:returnDate and cabinClass=:cabinClass",
+                    "and u.travel_date=:travelDate and u.return_date=:returnDate and u.cabin_class=:cabinClass",
             nativeQuery = true)
     List<Flight> search(@Param("origin") String origin, @Param("destination") String destination ,
                         @Param("travelDate")LocalDate travelDate,@Param("returnDate") LocalDate returnDate,
@@ -22,14 +22,14 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
 
     @Query(
             value = "SELECT * FROM flight u WHERE u.origin =:origin and u.destination=:destination" +
-                    " and travelDate=:travelDate and returnDate=:returnDate ",
+                    " and u.travel_date=:travelDate and u.return_date=:returnDate ",
             nativeQuery = true)
     List<Flight> getSearchReturn(@Param("origin") String origin, @Param("destination") String destination ,
                         @Param("travelDate")LocalDate travelDate,@Param("returnDate") LocalDate returnDate);
 
     @Query(
             value = "SELECT * FROM flight u WHERE u.origin =:origin and u.destination=:destination" +
-                    " and travelDate=:travelDate ",
+                    " and u.travel_date=:travelDate ",
             nativeQuery = true)
     List<Flight> getSearchDirect(@Param("origin") String origin, @Param("destination") String destination ,
                         @Param("travelDate")LocalDate travelDate);

@@ -42,13 +42,13 @@ public class BookFlightController {
                                    @RequestParam(required = false) LocalDate returnDate,
                                    @RequestParam(required = false) String cabinClass,
                                    @RequestParam(required = false) String name,
-                                   @RequestParam(required = false) String phone_number,
+                                   @RequestParam(required = false) String phoneNumber,
                                    @RequestParam(required = false) String email,
-                                   @RequestParam(required = false) Double cost,
+                                   @RequestParam(required = false) Double price,
                                    @RequestParam(required = false) LocalDate dob,
-                                   @RequestParam(required = false) Integer number_of_passengers){
+                                   @RequestParam(required = false) Integer numberOfPassengers){
     bookFlightService.updateBookedFlight(bookFlightId,origin,destination,travelDate,returnDate,
-            cabinClass,name,phone_number,email,cost,dob,number_of_passengers);
+            cabinClass,name,phoneNumber,email,price,dob,numberOfPassengers);
 
     }
 

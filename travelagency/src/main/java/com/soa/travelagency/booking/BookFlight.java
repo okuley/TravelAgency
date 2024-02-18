@@ -26,16 +26,19 @@ public class BookFlight {
 
     private String cabinClass;
     private String name;
-    private String phone_number;
+    private String phoneNumber;
     private String email;
-    private Double cost;
+    private Double price;
     private LocalDate dob;
 
+    private String currency;
 
-    private Integer number_of_passengers;
+
+
+    private Integer numberOfPassengers;
 
     public BookFlight(long id, String origin, String destination, LocalDate travelDate, LocalDate returnDate, String cabinClass,
-                      String name, String phone_number, String email, Double cost,LocalDate dob, Integer number_of_passengers) {
+                      String name, String phoneNumber, String email, Double price,LocalDate dob, Integer numberOfPassengers,String currency) {
         this.id = id;
         this.origin = origin;
         this.destination = destination;
@@ -43,26 +46,29 @@ public class BookFlight {
         this.returnDate = returnDate;
         this.cabinClass = cabinClass;
         this.name = name;
-        this.phone_number = phone_number;
+        this.phoneNumber = phoneNumber;
         this.email = email;
-        this.cost = cost;
+        this.price = price;
         this.dob=dob;
-        this.number_of_passengers=number_of_passengers;
+        this.numberOfPassengers=numberOfPassengers;
+        this.currency=currency;
     }
 
     public BookFlight(String origin, String destination, LocalDate travelDate, LocalDate returnDate, String cabinClass,
-                      String name, String phone_number, String email, Double cost,LocalDate dob, Integer number_of_passengers) {
+                      String name, String phoneNumber, String email, Double price,LocalDate dob, Integer numberOfPassengers,
+                      String currency) {
         this.origin = origin;
         this.destination = destination;
         this.travelDate = travelDate;
         this.returnDate = returnDate;
         this.cabinClass = cabinClass;
         this.name = name;
-        this.phone_number = phone_number;
+        this.phoneNumber = phoneNumber;
         this.email = email;
-        this.cost = cost;
+        this.price = price;
         this.dob=dob;
-        this.number_of_passengers=number_of_passengers;
+        this.numberOfPassengers=numberOfPassengers;
+        this.currency=currency;
     }
 
     public BookFlight() {
@@ -124,12 +130,12 @@ public class BookFlight {
         this.name = name;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
@@ -140,12 +146,12 @@ public class BookFlight {
         this.email = email;
     }
 
-    public Double getCost() {
-        return cost;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setCost(Double cost) {
-        this.cost = cost;
+    public void setPrice(Double price) {
+        this.price = price;
     }
     public LocalDate getDob() {
         return dob;
@@ -155,11 +161,19 @@ public class BookFlight {
         this.dob = dob;
     }
 
-    public Integer getNumber_of_passengers() {
-        return number_of_passengers;
+    public Integer getNumberOfPassengers() {
+        return numberOfPassengers;
     }
 
-    public void setNumber_of_passengers(Integer number_of_passengers) {
-        this.number_of_passengers = number_of_passengers;
+    public void setNumberOfPassengers(Integer numberOfPassengers) {
+        this.numberOfPassengers = numberOfPassengers;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 }

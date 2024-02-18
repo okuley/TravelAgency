@@ -36,7 +36,7 @@ public class BookFlightService {
    @Transactional
     public void updateBookedFlight(long bookFlightId, String origin, String destination, LocalDate travelDate,
                                    LocalDate returnDate,String cabinClass,String name,
-                                   String phone_number,String email,Double cost,LocalDate dob,Integer number_of_passengers){
+                                   String phoneNumber,String email,Double price,LocalDate dob,Integer numberOfPassengers){
         BookFlight bookFlight= bookFlightRepository.findById(bookFlightId).orElseThrow(()-> new IllegalStateException
                 ("Booking with id" + bookFlightId + "does not exist"));
 
@@ -58,21 +58,21 @@ public class BookFlightService {
        if(name !=null && !Objects.equals(bookFlight.getName(),name)){
            bookFlight.setName(name);
        }
-       if(phone_number !=null && !Objects.equals(bookFlight.getPhone_number(),phone_number)){
-           bookFlight.setPhone_number(phone_number);
+       if(phoneNumber !=null && !Objects.equals(bookFlight.getPhoneNumber(),phoneNumber)){
+           bookFlight.setPhoneNumber(phoneNumber);
        }
        if(email!=null && !email.isEmpty() && !Objects.equals(bookFlight.getEmail(),email)){
            bookFlight.setEmail(email);
        }
-       if( cost!=null && bookFlight.getCost()!=cost) {
-           bookFlight.setCost(cost);
+       if( price!=null && bookFlight.getPrice()!=price) {
+           bookFlight.setPrice(price);
        }
        if(dob !=null && !Objects.equals(bookFlight.getDob(),dob)){
            bookFlight.setDob(dob);
        }
 
-       if(number_of_passengers !=null && bookFlight.getNumber_of_passengers()!=number_of_passengers) {
-           bookFlight.setNumber_of_passengers(number_of_passengers);
+       if(numberOfPassengers !=null && bookFlight.getNumberOfPassengers()!=numberOfPassengers) {
+           bookFlight.setNumberOfPassengers(numberOfPassengers);
        }
     }
 

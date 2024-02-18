@@ -14,13 +14,13 @@ public class FlightConfig {
     return args ->{
         Flight flight1= new Flight(
                 "LHR","ACC", LocalDate.of(2024,2,15) , LocalDate.of(2024,2,16),
-                "ECONOMY","USD",150,150,"EMIRATES",600);
+                "ECONOMY","GBP",150,150,"EMIRATES",600);
         Flight flight2= new Flight(
                 "LHR","JFK", LocalDate.of(2024,2,17) , LocalDate.of(2024,2,20),
-                "ECONOMY","USD",150,150,"EMIRATES",500);
+                "ECONOMY","GBP",150,150,"EMIRATES",500);
         Flight flight3= new Flight(
                 "LHR","JFK", LocalDate.of(2024,2,17) , LocalDate.of(2024,2,20),
-                "PREMIUM ECONOMY","USD",150,150,"EMIRATES",750);
+                "PREMIUM ECONOMY","GBP",150,150,"EMIRATES",750);
 
 
         repository.saveAll(
