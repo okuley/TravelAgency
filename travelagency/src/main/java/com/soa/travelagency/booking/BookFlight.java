@@ -37,8 +37,11 @@ public class BookFlight {
 
     private Integer numberOfPassengers;
 
+    private long fligtId;
+
     public BookFlight(long id, String origin, String destination, LocalDate travelDate, LocalDate returnDate, String cabinClass,
-                      String name, String phoneNumber, String email, Double price,LocalDate dob, Integer numberOfPassengers,String currency) {
+                      String name, String phoneNumber, String email, Double price,LocalDate dob, Integer numberOfPassengers,String currency,
+                      long fligtId) {
         this.id = id;
         this.origin = origin;
         this.destination = destination;
@@ -52,11 +55,12 @@ public class BookFlight {
         this.dob=dob;
         this.numberOfPassengers=numberOfPassengers;
         this.currency=currency;
+        this.fligtId=fligtId;
     }
 
     public BookFlight(String origin, String destination, LocalDate travelDate, LocalDate returnDate, String cabinClass,
                       String name, String phoneNumber, String email, Double price,LocalDate dob, Integer numberOfPassengers,
-                      String currency) {
+                      String currency,long fligtId) {
         this.origin = origin;
         this.destination = destination;
         this.travelDate = travelDate;
@@ -69,6 +73,7 @@ public class BookFlight {
         this.dob=dob;
         this.numberOfPassengers=numberOfPassengers;
         this.currency=currency;
+        this.fligtId=fligtId;
     }
 
     public BookFlight() {
@@ -175,5 +180,13 @@ public class BookFlight {
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    public long getFligtId() {
+        return fligtId;
+    }
+
+    public void setFligtId(long fligtId) {
+        this.fligtId = fligtId;
     }
 }

@@ -23,10 +23,12 @@ const [dob,setDob]=useState("");
 const [currency,setCurrency]=useState("");
 const [price,setPrice]=useState("");
 const [phoneNumber,setPhoneNumber]=useState("");
-const [bookedFlights,setBookedFlights]=useState([]);
 const [fromCur,setFromCur]=useState("")
 const [toCur,setToCur]=useState("")
 const [exchangeRate,setExchangeRate]=useState([])
+const [weathers,setWeathers]=useState([])
+
+
 
 function searchForFlight(){
     
@@ -44,7 +46,13 @@ function searchForFlight(){
             setFlights(result);
           
         }
-        )
+        ).then(fetch(`http://api.openweathermap.org/data/2.5/weather?q=${destination}&units=metric&APPID=c40156fe6421ae660d4f4f6a89bfea86`)
+        .then(res=>res.json())
+        .then((result)=>{
+            setWeathers(result);
+          
+        }
+        ))
 
     }
     else if(!(flight.origin==='') && !(flight.destination==='') &&
@@ -56,7 +64,13 @@ function searchForFlight(){
             setFlights(result);
           
         }
-        )   
+        ).then(fetch(`http://api.openweathermap.org/data/2.5/weather?q=${destination}&units=metric&APPID=c40156fe6421ae660d4f4f6a89bfea86`)
+        .then(res=>res.json())
+        .then((result)=>{
+            setWeathers(result);
+          
+        }
+        ))   
     }
     else if(!(flight.origin==='') && !(flight.destination==='') &&
         !(travelDate==='')){
@@ -67,7 +81,13 @@ function searchForFlight(){
             setFlights(result);
           
         }
-        ) 
+        ).then(fetch(`http://api.openweathermap.org/data/2.5/weather?q=${destination}&units=metric&APPID=c40156fe6421ae660d4f4f6a89bfea86`)
+        .then(res=>res.json())
+        .then((result)=>{
+            setWeathers(result);
+          
+        }
+        )) 
 
     }
     else if (!(flight.origin==='') && !(flight.destination==='') &&!(flight.cabinClass==='')){
@@ -78,7 +98,13 @@ function searchForFlight(){
             setFlights(result);
           
         }
-        ) 
+        ).then(fetch(`http://api.openweathermap.org/data/2.5/weather?q=${destination}&units=metric&APPID=c40156fe6421ae660d4f4f6a89bfea86`)
+        .then(res=>res.json())
+        .then((result)=>{
+            setWeathers(result);
+          
+        }
+        )) 
     }
     else if (!(flight.origin==='') && !(flight.destination==='')){
         
@@ -88,7 +114,13 @@ function searchForFlight(){
             setFlights(result);
           
         }
-        ) 
+        ).then(fetch(`http://api.openweathermap.org/data/2.5/weather?q=${destination}&units=metric&APPID=c40156fe6421ae660d4f4f6a89bfea86`)
+        .then(res=>res.json())
+        .then((result)=>{
+            setWeathers(result);
+
+        }
+        )) 
     }
     
     else{
@@ -99,6 +131,15 @@ function searchForFlight(){
             setFlights(result);
           
         }
+        ).then(
+            fetch(`http://api.openweathermap.org/data/2.5/weather?q=paris&units=metric&APPID=c40156fe6421ae660d4f4f6a89bfea86`)
+    .then(res=>res.json())
+    .then((result)=>{
+        setWeathers(result)
+        console.log(weathers)
+        
+        
+    }) 
         ) 
     }
 
@@ -143,7 +184,8 @@ function getFlight(id){
         let cabinClass=flight.cabinClass
         let currency=flight.currency
         let price=flight.price
-        const bookDetails= {origin,destination,travelDate,returnDate,numberOfPassengers,
+        let fligtId=flight.id
+        const bookDetails= {fligtId,origin,destination,travelDate,returnDate,numberOfPassengers,
             cabinClass,name,email,phoneNumber,dob,currency,price};
         console.log(bookDetails);
         
@@ -166,20 +208,20 @@ alert("Booking is reserved successfully");
 }
 
 function lowestPrice (){
-    let min=9999999999999;
-    const flightsPrices=flights
+    let min=0;
+    const flightsPrices=flights;
     console.log(flightsPrices);
+    let pricearray=[];
     for ( let i=0 ;i<flightsPrices.length;i++ ){
-
-        console.log(flightsPrices[i].price)
-        if(min>flightsPrices[i].price){
-            min=flightsPrices[i].price
-        }
         
+        pricearray.push(flightsPrices[i].price);
+       
     }
+    pricearray.sort();
+    min=pricearray[0];
 
     console.log(min);
-    return min
+    return min;
     
 } 
 
@@ -193,7 +235,19 @@ else{
 }
 
 }
+/* 
+function destination(city){
 
+    
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${destination}&units=metric&APPID=c40156fe6421ae660d4f4f6a89bfea86`)
+    .then(res=>res.json())
+    .then((result)=>{
+        setWeather(result);
+      
+    }
+    ) 
+} 
+ */
 
 
 
@@ -209,14 +263,38 @@ else{
                 <div className="row">
                 <div className="col-3">
                 <label htmlFor="origin" className="form-label">Departing Airport</label>
-            <input type="text" className="form-control" id="origin" name="origin" value={origin} 
-     onChange={(e)=>setOrigin(e.target.value)}/>
+            <select type="text" className="form-control" id="origin" name="origin" value={origin} 
+     onChange={(e)=>setOrigin(e.target.value)}>
+                <option value='' ></option>
+                <option value='Paris'>Paris</option>
+            <option  value='London'>London</option>
+            <option  value='Rome'>Rome</option>
+            <option  value='Dubai'>Dubai</option>
+            <option value='Tokyo'>Tokyo</option>
+            <option value='Sedney'>Sedney</option>
+            <option value='Istanbul'>Istanbul</option>
+            <option value='Lagos'>Lagos</option>
+            <option value='Accra'>Accra</option>
+            <option value='Cairo'>Cairo</option>
+          </select>
             
                 </div>
                 <div className="col-3">
                 <label htmlFor="destination" className="form-label">Arriving Airport</label>
-            <input type="text" className="form-control" id="destination" name="destination" value={destination} 
-     onChange={(e)=>setDestination(e.target.value)} />
+            <select type="text" className="form-control" id="destination" name="destination" value={destination} 
+     onChange={(e)=>setDestination(e.target.value)} >
+             <option value='' ></option>
+            <option value='Paris'>Paris</option>
+            <option  value='London'>London</option>
+            <option  value='Rome'>Rome</option>
+            <option  value='Dubai'>Dubai</option>
+            <option value='Tokyo'>Tokyo</option>
+            <option value='Sedney'>Sedney</option>
+            <option value='Istanbul'>Istanbul</option>
+            <option value='Lagos'>Lagos</option>
+            <option value='Accra'>Accra</option>
+            <option value='Cairo'>Cairo</option>
+        </select>
                 </div>
                 <div className="col-6">
                     <div className="row">
@@ -339,7 +417,7 @@ else{
             <td>{flight.serviceProvider}</td>
              <td>{flight.price}</td> 
             <td>{flight.currency}</td>
-            <td>{flight.number_of_seats_avail}</td>
+            <td>{flight.numberOfSeatsAvail}</td>
             <td><button type="button" className="btn btn-warning m-3" data-toggle="modal" data-target="#modal1" onClick={()=>getFlight(flight.id)} >Book</button>
             <div className="modal" id="modal1"  role="dialog" aria-labelledby="modallabel1" aria-hidden= "true">
             <div className="row justify-content-center">
@@ -448,12 +526,35 @@ else{
           )}
         </tbody>
          </table>
+          <br/>
           
-          
-             
+
+
+        
+           <div>
+       <h3> Weather condition in {weathers.name} now</h3>
+       <h3> Visibility : {weathers.visibility} </h3>
+       <h3>to be done </h3>
+       
+       <div>
+        
+         
+       
+       </div> 
+       
+     </div>
+            
+            <br/>
+               {/*   <div >
+                <h1 className="text-center"> Driving Direction Map</h1>
+                </div>  */}
+
+
+            
+           
        
       </div>
-
+       
         </div>
         
         

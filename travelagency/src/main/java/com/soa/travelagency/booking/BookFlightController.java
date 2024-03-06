@@ -1,15 +1,21 @@
 package com.soa.travelagency.booking;
 
+import com.soa.travelagency.flight.FlightRepository;
+import com.soa.travelagency.flight.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.soa.travelagency.flight.FlightController;
 
 import java.time.LocalDate;
 import java.util.List;
+
+
 
 @RestController
 @CrossOrigin
 @RequestMapping(path = "api/v1/bookings")
 public class BookFlightController {
+
     private final BookFlightService bookFlightService;
     @Autowired
     public BookFlightController(BookFlightService bookFlightService){

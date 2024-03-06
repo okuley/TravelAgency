@@ -13,13 +13,13 @@ public class FlightConfig {
     CommandLineRunner commandLineRunner(FlightRepository repository){
     return args ->{
         Flight flight1= new Flight(
-                "LHR","ACC", LocalDate.of(2024,2,15) , LocalDate.of(2024,2,16),
+                "London","Accra", LocalDate.of(2024,2,15) , LocalDate.of(2024,2,16),
                 "ECONOMY","GBP",150,150,"EMIRATES",600);
         Flight flight2= new Flight(
-                "LHR","JFK", LocalDate.of(2024,2,17) , LocalDate.of(2024,2,20),
+                "Lodon","Lagos", LocalDate.of(2024,2,17) , LocalDate.of(2024,2,20),
                 "ECONOMY","GBP",150,150,"EMIRATES",500);
         Flight flight3= new Flight(
-                "LHR","JFK", LocalDate.of(2024,2,17) , LocalDate.of(2024,2,20),
+                "Paris","Dubai", LocalDate.of(2024,2,17) , LocalDate.of(2024,2,20),
                 "PREMIUM ECONOMY","GBP",150,150,"EMIRATES",750);
 
 

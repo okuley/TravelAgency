@@ -1,5 +1,7 @@
 package com.soa.travelagency.booking;
 
+import com.soa.travelagency.flight.FlightController;
+import com.soa.travelagency.flight.FlightService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,8 @@ import java.util.Objects;
 
 @Service
 public class BookFlightService {
+    @Autowired
+    private  FlightService flightService;
     private final BookFlightRepository bookFlightRepository;
     @Autowired
     public BookFlightService(BookFlightRepository bookFlightRepository){
@@ -23,7 +27,7 @@ public class BookFlightService {
     public String createBookedFlight(BookFlight bookFlight){
 
         bookFlightRepository.save(bookFlight);
-
+        flightService.getAvailableSeats();
         return "Flight has been book successfully";
 
     }

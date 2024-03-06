@@ -29,8 +29,8 @@ private long id;
 
  private String currency;
 
- private int number_of_seats_avail;
- private int number_of_seats;
+ private int numberOfSeatsAvail;
+ private int numberOfSeats;
 
  private String serviceProvider;
 
@@ -40,8 +40,8 @@ private long id;
 
 
  public Flight(long id, String origin, String destination, LocalDate travelDate, LocalDate returnDate, String cabinClass,
-               String currency, int number_of_seats_avail, int number_of_seats,
-               String serviceProvider,double price) {
+               String currency, int numberOfSeatsAvail, int numberOfSeats,
+               String serviceProvider, double price) {
   this.id = id;
   this.origin = origin;
   this.destination = destination;
@@ -49,23 +49,23 @@ private long id;
   this.returnDate = returnDate;
   this.cabinClass = cabinClass;
   this.currency = currency;
-  this.number_of_seats_avail = number_of_seats_avail;
-  this.number_of_seats = number_of_seats;
+  this.numberOfSeatsAvail = numberOfSeatsAvail;
+  this.numberOfSeats = numberOfSeats;
   this.serviceProvider=serviceProvider;
   this.price=price;
  }
 
  public Flight(String origin, String destination, LocalDate travelDate,
                LocalDate returnDate, String cabinClass, String currency,
-               int number_of_seats_avail, int number_of_seats, String serviceProvider,double price) {
+               int numberOfSeatsAvail, int numberOfSeats, String serviceProvider, double price) {
   this.origin = origin;
   this.destination = destination;
   this.travelDate = travelDate;
   this.returnDate = returnDate;
   this.cabinClass = cabinClass;
   this.currency = currency;
-  this.number_of_seats_avail = number_of_seats_avail;
-  this.number_of_seats = number_of_seats;
+  this.numberOfSeatsAvail = numberOfSeatsAvail;
+  this.numberOfSeats = numberOfSeats;
   this.serviceProvider=serviceProvider;
   this.price=price;
  }
@@ -129,20 +129,20 @@ private long id;
  public void setCurrency(String currency) {
   this.currency = currency;
  }
- public int getNumber_of_seats_avail() {
-  return number_of_seats_avail;
+ public int getNumberOfSeatsAvail() {
+  return numberOfSeatsAvail;
  }
 
- public void setNumber_of_seats_avail(int number_of_seats_avail) {
-  this.number_of_seats_avail = number_of_seats_avail;
+ public void setNumberOfSeatsAvail(int number_of_seats_avail) {
+  this.numberOfSeatsAvail = number_of_seats_avail;
  }
 
- public int getNumber_of_seats() {
-  return number_of_seats;
+ public int getNumberOfSeats() {
+  return numberOfSeats;
  }
 
- public void setNumber_of_seats(int number_of_seats) {
-  this.number_of_seats = number_of_seats;
+ public void setNumberOfSeats(int number_of_seats) {
+  this.numberOfSeats = number_of_seats;
  }
 
  public String getServiceProvider() {

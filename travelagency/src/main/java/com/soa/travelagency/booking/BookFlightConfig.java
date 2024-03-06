@@ -17,15 +17,15 @@ public class BookFlightConfig {
             BookFlight bookFlight1= new BookFlight(
                     "LHR","ACC", LocalDate.of(2024,2,15) , LocalDate.of(2024,2,16),
                     "ECONOMY","Emma","07442853625","baff@gmail.com",600.0,
-                    LocalDate.of(1991,12,15),3,"GBP");
+                    LocalDate.of(1991,12,15),3,"GBP",10);
             BookFlight bookFlight2= new BookFlight(
                     "LHR","ACC", LocalDate.of(2024,2,15) , LocalDate.of(2024,2,16),
                     "ECONOMY","Emma","07442853625","baff@gmail.com",500.0,
-                    LocalDate.of(1991,12,15),2,"GBP");
+                    LocalDate.of(1991,12,15),2,"GBP",20);
             BookFlight bookFlight3= new BookFlight(
                     "LHR","ACC", LocalDate.of(2024,2,15) , LocalDate.of(2024,2,16),
                     "ECONOMY","Emma","07442853625","baff@gmail.com",500.0,
-                    LocalDate.of(1991,12,15),1,"GBP");
+                    LocalDate.of(1991,12,15),1,"GBP",30);
 
 
 

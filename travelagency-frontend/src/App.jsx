@@ -7,7 +7,7 @@ import {
     Route,
 } from "react-router-dom";
 import Home from "./pages/index.jsx";
-//import About from "./pages/about.jsx";
+import Admin from "./pages/admin.jsx";
 
 
 
@@ -22,6 +22,7 @@ function App() {
       <Routes>
 
       <Route exact path="/" element={<Home />} />
+      <Route  path="/admin" element={<Admin />} />
       </Routes>
 
       </Router>
