@@ -235,6 +235,15 @@ else{
 }
 
 }
+
+function weather(){
+    
+ let weather=weathers
+
+ con
+
+}
+
 /* 
 function destination(city){
 
