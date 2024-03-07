@@ -71,19 +71,19 @@ public class FlightService {
         flightRepository.deleteById(flightId);
         return "Booking with id "+flightId+" has been deleted";
     }
-    @Transactional
+   /* @Transactional
     public void updateflight(long flightId, String origin, 
                              String destination, LocalDate travelDate, 
                              LocalDate returnDate, String cabinClass, 
                              Double price, Integer numberOfSeats,
-                             Integer numberOfSeatsAvail, String currency) {
+                             Integer numberOfSeatsAvail) {
         Flight flight= flightRepository.findById(flightId).orElseThrow(()-> new IllegalStateException
                 ("Booking with id" + flightId + "does not exist"));
 
         if(origin !=null  && !Objects.equals(flight.getOrigin(),origin)){
             flight.setOrigin(origin);
         }
-       /* if (!destination.isEmpty() && !Objects.equals(flight.getDestination(),destination)){
+        if (destination!=null && !Objects.equals(flight.getDestination(),destination)){
             flight.setDestination(destination);
         }
         if(travelDate !=null && !Objects.equals(flight.getTravelDate(),travelDate)){
@@ -92,12 +92,54 @@ public class FlightService {
         if(returnDate !=null && !Objects.equals(flight.getReturnDate(),returnDate)){
             flight.setReturnDate(returnDate);
         }
-        if(!cabinClass.isEmpty() && !Objects.equals(flight.getCabinClass(),cabinClass)){
+        if(cabinClass!=null && !Objects.equals(flight.getCabinClass(),cabinClass)){
             flight.setCabinClass(cabinClass);
         }
+        if (price !=null && !Objects.equals(flight.getPrice(),price) ){
+            flight.setPrice(price);
+        }|
 
-*/
+        if(numberOfSeatsAvail!=null && !Objects.equals(flight.getNumberOfSeatsAvail(),numberOfSeatsAvail)){
+            flight.setNumberOfSeatsAvail(numberOfSeatsAvail);
+        }
+        if(numberOfSeats!=null && !Objects.equals(flight.getNumberOfSeats(),numberOfSeats)){
+            flight.setNumberOfSeats(numberOfSeats);
+        }
+
+
 
     
-    }
+    }*/
+
+    @Transactional
+    public String updateflight(long flightId, String origin,
+                             String destination, LocalDate travelDate,LocalDate returnDate,String cabinClass,Double price) {
+        Flight flight= flightRepository.findById(flightId).orElseThrow(()-> new IllegalStateException
+                ("Booking with id" + flightId + "does not exist"));
+
+        if(origin !=null  && !Objects.equals(flight.getOrigin(),origin)){
+            flight.setOrigin(origin);
+        }
+        if (destination!=null && !Objects.equals(flight.getDestination(),destination)){
+            flight.setDestination(destination);
+        }
+        if(travelDate !=null && !Objects.equals(flight.getTravelDate(),travelDate)){
+            flight.setTravelDate(travelDate);
+        }
+        if(returnDate !=null && !Objects.equals(flight.getReturnDate(),returnDate)){
+            flight.setReturnDate(returnDate);
+        }
+        if(cabinClass!=null && !Objects.equals(flight.getCabinClass(),cabinClass)){
+            flight.setCabinClass(cabinClass);
+        }
+        if (price !=null && !Objects.equals(flight.getPrice(),price) ){
+            flight.setPrice(price);
+        }
+        return "Flight with id "+flightId+" has been update";
+        }
+
+
+
+
+
 }

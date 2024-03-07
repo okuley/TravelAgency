@@ -76,11 +76,11 @@ public class FlightController {
     @DeleteMapping("{flightId}")
     public String deleteflight(@PathVariable("flightId") long flightId ){
         flightServiceService.deleteflight(flightId);
-        return "Booking with id "+flightId+" has been deleted";
+        return "Flight with id "+flightId+" has been deleted";
     }
 
-    @PutMapping("{flightId}")
-    public void updateBookedFlight(@PathVariable("flightId") long flightId,
+   /* @PutMapping("{flightId}")
+    public void updateFlight(@PathVariable("flightId") long flightId,
                                    @RequestParam(required = false) String origin,
                                    @RequestParam(required = false) String destination,
                                    @RequestParam(required = false) LocalDate travelDate,
@@ -88,11 +88,25 @@ public class FlightController {
                                    @RequestParam(required = false) String cabinClass,
                                    @RequestParam(required = false) Double price,
                                    @RequestParam(required = false) Integer numberOfSeats,
-                                   @RequestParam(required = false) Integer numberOfSeatsAvail,
-                                   @RequestParam(required = false) String currency){
+                                   @RequestParam(required = false) Integer numberOfSeatsAvail
+                                   ){
         flightServiceService.updateflight(flightId,origin,destination,travelDate,returnDate,
-                cabinClass,price,numberOfSeats,numberOfSeatsAvail,currency);
+                cabinClass,price,numberOfSeats,numberOfSeatsAvail);
 
+    }*/
+
+    @PutMapping("{flightId}")
+    public String updateFlight(@PathVariable("flightId") long flightId,
+                             @RequestParam(required = false) String origin,
+                             @RequestParam(required = false) String destination,
+                               @RequestParam(required = false) LocalDate travelDate,
+                               @RequestParam(required = false) LocalDate returnDate,
+                               @RequestParam(required = false) String cabinClass,
+                               @RequestParam(required = false) Double price
+
+    ){
+        flightServiceService.updateflight(flightId,origin,destination,travelDate,returnDate,cabinClass,price);
+        return "Flight with id "+flightId+" has been update";
     }
 
 

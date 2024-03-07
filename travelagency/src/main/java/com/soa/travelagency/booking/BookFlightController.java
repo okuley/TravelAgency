@@ -41,7 +41,7 @@ public class BookFlightController {
     }
 
     @PutMapping("{bookFlightId}")
-    public void updateBookedFlight(@PathVariable("bookFlightId") long bookFlightId,
+    public String updateBookedFlight(@PathVariable("bookFlightId") long bookFlightId,
                                    @RequestParam(required = false) String origin,
                                    @RequestParam(required = false) String destination,
                                    @RequestParam(required = false) LocalDate travelDate,
@@ -51,11 +51,10 @@ public class BookFlightController {
                                    @RequestParam(required = false) String phoneNumber,
                                    @RequestParam(required = false) String email,
                                    @RequestParam(required = false) Double price,
-                                   @RequestParam(required = false) LocalDate dob,
-                                   @RequestParam(required = false) Integer numberOfPassengers){
+                                   @RequestParam(required = false) LocalDate dob){
     bookFlightService.updateBookedFlight(bookFlightId,origin,destination,travelDate,returnDate,
-            cabinClass,name,phoneNumber,email,price,dob,numberOfPassengers);
-
+            cabinClass,name,phoneNumber,email,price,dob);
+ return "Booking with ID " + bookFlightId + " was deleted successfully";
     }
 
 }

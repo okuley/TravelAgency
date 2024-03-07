@@ -38,9 +38,9 @@ public class BookFlightService {
         return "Booking with id "+bookFlightId+" has been deleted";
     }
    @Transactional
-    public void updateBookedFlight(long bookFlightId, String origin, String destination, LocalDate travelDate,
+    public String updateBookedFlight(long bookFlightId, String origin, String destination, LocalDate travelDate,
                                    LocalDate returnDate,String cabinClass,String name,
-                                   String phoneNumber,String email,Double price,LocalDate dob,Integer numberOfPassengers){
+                                   String phoneNumber,String email,Double price,LocalDate dob){
         BookFlight bookFlight= bookFlightRepository.findById(bookFlightId).orElseThrow(()-> new IllegalStateException
                 ("Booking with id" + bookFlightId + "does not exist"));
 
@@ -74,10 +74,7 @@ public class BookFlightService {
        if(dob !=null && !Objects.equals(bookFlight.getDob(),dob)){
            bookFlight.setDob(dob);
        }
-
-       if(numberOfPassengers !=null && bookFlight.getNumberOfPassengers()!=numberOfPassengers) {
-           bookFlight.setNumberOfPassengers(numberOfPassengers);
-       }
+       return "Booking with ID " + bookFlightId + " was deleted successfully";
     }
 
 
