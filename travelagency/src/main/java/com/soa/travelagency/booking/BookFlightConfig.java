@@ -15,15 +15,15 @@ public class BookFlightConfig {
     CommandLineRunner commandLineRunner1(BookFlightRepository repository){
         return args ->{
             BookFlight bookFlight1= new BookFlight(
-                    "LHR","ACC", LocalDate.of(2024,2,15) , LocalDate.of(2024,2,16),
+                    "London","Accra", LocalDate.of(2024,2,15) , LocalDate.of(2024,2,16),
                     "ECONOMY","Emma","07442853625","baff@gmail.com",600.0,
                     LocalDate.of(1991,12,15),3,"GBP",10);
             BookFlight bookFlight2= new BookFlight(
-                    "LHR","ACC", LocalDate.of(2024,2,15) , LocalDate.of(2024,2,16),
+                    "London","Lagos", LocalDate.of(2024,2,15) , LocalDate.of(2024,2,16),
                     "ECONOMY","Emma","07442853625","baff@gmail.com",500.0,
                     LocalDate.of(1991,12,15),2,"GBP",20);
             BookFlight bookFlight3= new BookFlight(
-                    "LHR","ACC", LocalDate.of(2024,2,15) , LocalDate.of(2024,2,16),
+                    "Paris","Cairo", LocalDate.of(2024,2,15) , LocalDate.of(2024,2,16),
                     "ECONOMY","Emma","07442853625","baff@gmail.com",500.0,
                     LocalDate.of(1991,12,15),1,"GBP",30);
 

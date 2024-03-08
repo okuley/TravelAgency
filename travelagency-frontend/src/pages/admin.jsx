@@ -727,7 +727,10 @@ return(
 
            
 
-
+          <br/>
+                 <div >
+                <h1 className="text-center"> Driving Direction Map</h1>
+                </div> 
             
            
        

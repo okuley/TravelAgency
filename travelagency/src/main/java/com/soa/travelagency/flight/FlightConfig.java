@@ -16,7 +16,7 @@ public class FlightConfig {
                 "London","Accra", LocalDate.of(2024,2,15) , LocalDate.of(2024,2,16),
                 "ECONOMY","GBP",150,150,"EMIRATES",600);
         Flight flight2= new Flight(
-                "Lodon","Lagos", LocalDate.of(2024,2,17) , LocalDate.of(2024,2,20),
+                "London","Lagos", LocalDate.of(2024,2,17) , LocalDate.of(2024,2,20),
                 "ECONOMY","GBP",150,150,"EMIRATES",500);
         Flight flight3= new Flight(
                 "Paris","Dubai", LocalDate.of(2024,2,17) , LocalDate.of(2024,2,20),

@@ -28,6 +28,18 @@ const [toCur,setToCur]=useState("")
 const [exchangeRate,setExchangeRate]=useState([])
 const [weathers,setWeathers]=useState([])
 
+const [weath,setWeath]=useState("")
+const [weathMain,setWeathMain]=useState("")
+const [weathDescription,setWeathDescription]=useState("")
+const [main,setMain]=useState("")
+const [temp,setTemp]=useState("")
+const [feelsLike,setFeelsLike]=useState("")
+const [pressure,setPressure]=useState("")
+const [tempMin,setTempMin]=useState("")
+const [tempMax,setTempMax]=useState("")
+const [humidity,setHumidity]=useState("")
+const [wind,setWind]=useState("")
+const [windSpeed,setWindSpeed]=useState("")
 
 
 function searchForFlight(){
@@ -137,17 +149,50 @@ function searchForFlight(){
     .then((result)=>{
         setWeathers(result)
         console.log(weathers)
+
+       
         
         
     }) 
         ) 
+        
     }
 
-    
+     let weather1=weathers
+ setWeathMain(weather1.weather[0].main)
+ console.log(weathMain)
+ setWeathDescription(weather1.weather[0].description)
+ console.log(weathDescription)
+ setTemp(weather1.main.temp)
+ setFeelsLike(weather1.main.feels_like)
+ setPressure(weather1.main.pressure)
+ setTempMin(weather1.main.temp_min)
+ setTempMax(weather1.main.temp_max)
+ setHumidity(weather1.main.humidity)
+ setWindSpeed(weather1.wind.speed)
+
         
 }
 
 useEffect(()=>{
+        const toCcy=toCur
+        //let toCcy="GBP"
+       // toCcy=toCur
+        const fromCur="GBP"
+        const ccy={fromCur,toCcy}
+        console.log(ccy)
+    fetch(`http://localhost:8080/api/v1/exchangeRate?fromCur=${fromCur}&toCur=${toCcy}`)
+    .then(res=>res.json())
+    .then((result)=>{
+        setExchangeRate(result);
+        console.log(exchangeRate)
+       
+    }
+    )
+    })
+
+
+    useEffect(()=>{
         const toCcy=toCur
         //let toCcy="GBP"
        // toCcy=toCur
@@ -238,7 +283,15 @@ else{
 
 function weather(){
     
- let weather=weathers
+ let weather1=weathers
+ setWeathMain(weather1.weather[0].main)
+ console.log(weathMain)
+ setWeathDescription(weather1.weather[0].description)
+ console.log(weathDescription)
+
+ 
+
+ set
 
  con
 
@@ -538,12 +591,29 @@ function destination(city){
           <br/>
           
 
-
+          <h3> Weather condition in {weathers.name} now</h3>
         
-           <div>
-       <h3> Weather condition in {weathers.name} now</h3>
-       <h3> Visibility : {weathers.visibility} </h3>
-       <h3>to be done </h3>
+           <div style={{backgroundImage:`url("./weather_bg.jpeg")`}} >
+
+      
+       <div className="row">
+        <div className="col-4">
+        <h4> Visibility : {weathers.visibility} </h4>
+       <h4> Weather: {weathMain} </h4>
+       <h4> Description: {weathDescription} </h4>
+       <h4> Feels Like: {feelsLike}  &deg;</h4>
+       <h4> Tempeature: {temp} &deg; </h4>
+        </div>
+        <div className="col-4">
+        <h4> Min Tempeature: {tempMin} &deg; </h4>
+       <h4> Max Tempeature: {tempMax}  &deg;</h4>
+       <h4> Pressure: {pressure} Pa</h4>
+       <h4> Humidity: {humidity} </h4>
+       <h4> Wind Speed: {windSpeed} mph</h4>
+        </div>
+       </div>
+       
+       
        
        <div>
         
@@ -554,9 +624,9 @@ function destination(city){
      </div>
             
             <br/>
-               {/*   <div >
+                 <div >
                 <h1 className="text-center"> Driving Direction Map</h1>
-                </div>  */}
+                </div>  
 
 
             
